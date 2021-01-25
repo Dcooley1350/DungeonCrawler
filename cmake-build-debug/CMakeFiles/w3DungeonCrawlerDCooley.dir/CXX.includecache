@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jrwebdevin/Documents/cs162/week3/w3DungeonCrawlerDCooley/dungeonCrawler.cpp
+iostream
+-
+limits
+-
+dungeonCrawler.hpp
+/home/jrwebdevin/Documents/cs162/week3/w3DungeonCrawlerDCooley/dungeonCrawler.hpp
+
+/home/jrwebdevin/Documents/cs162/week3/w3DungeonCrawlerDCooley/dungeonCrawler.hpp
+
+/home/jrwebdevin/Documents/cs162/week3/w3DungeonCrawlerDCooley/main.cpp
+iostream
+-
+dungeonCrawler.hpp
+/home/jrwebdevin/Documents/cs162/week3/w3DungeonCrawlerDCooley/dungeonCrawler.hpp
+
