@@ -75,7 +75,7 @@ void getMove(const int currentPlayerCoordinates[], int nextPlayerCoordinates[])
         // Uppercase the input to allow lower and uppercase entries
         userInput = static_cast<char>(toupper(userInput));
         // Check input for fail or invalid characters
-        if(validateCharacterInput( userInput, ACCEPTABLE_MOVES, NUM_VALID_INPUTS)){
+        if(!cin.fail() && validateCharacterInput( userInput, ACCEPTABLE_MOVES, NUM_VALID_INPUTS)){
             //Input is valid, must make sure it is in bounds, then record
             switch (userInput) {
                 case UP:
@@ -134,7 +134,7 @@ void getMove(const int currentPlayerCoordinates[], int nextPlayerCoordinates[])
     } while(!validInput);
 }
 
-bool checkMove(const char (&dungeon)[MAX_SIZE][MAX_SIZE], int newPlayerCoordinates[], char objectToCheck)
+bool checkMove(const char (&dungeon)[MAX_SIZE][MAX_SIZE], const int newPlayerCoordinates[], char objectToCheck)
 {
     bool spaceContainsObject = false;
     if(dungeon[newPlayerCoordinates[Y_AXIS]][newPlayerCoordinates[X_AXIS]] == objectToCheck){
@@ -151,17 +151,18 @@ void updateDungeon(char (&dungeon)[MAX_SIZE][MAX_SIZE], const int currentPlayerC
 
 bool playAgain()
 {
-
-    char userInput, acceptableInput[2] {'y', 'n'};
+    char userInput;
     bool playAgain, validInput;
-    cout << "Would you like to play again?(y/n)" << endl;
+    cout << "Would you like to play again?(Y/N)" << endl;
     do {
         cin >> userInput;
-        if(validateCharacterInput(userInput, acceptableInput, 2)){
+        // Uppercase the input to allow lower and uppercase entries
+        userInput = static_cast<char>(toupper(userInput));
+        if(!cin.fail() && validateCharacterInput(userInput, ACCEPTABLE_INPUT, 2)){
             validInput = true;
         }
         else {
-            cout << "Invalid input detected. Enter y/n." << endl;
+            cout << "Invalid input detected. Enter Y/N." << endl;
             resetStream();
             validInput = false;
         }
@@ -189,6 +190,7 @@ int getInteger(int min, int max)
         else {
             validInput = false;
             cout << "Invalid input detected. Try again" << endl;
+            resetStream();
         }
     } while(!validInput);
 
